@@ -1,3 +1,5 @@
+Neuda project is a Spring Boot-based banking system designed with a modular structure, ensuring maintainability and separation of concerns. It follows standard practices by organizing components into packages for models, repositories, services, controllers, and exceptions. The Account and Transaction entities are stored as MongoDB documents, with AccountRepository extending MongoRepository for data access. Business logic, such as creating accounts and processing transactions, resides in the AccountService class, while AccountController manages API requests. Custom exceptions like InsufficientFundsException and AccountNotFoundException enhance error handling, ensuring a smooth transaction flow.
+
 Project Folder Structure and Classes
 1. Project Structure Overview:
 "Our project follows a standard Spring Boot structure. The main components are divided
