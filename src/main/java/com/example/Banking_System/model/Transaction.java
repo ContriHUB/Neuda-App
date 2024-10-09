@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class Transaction {
     private String type;
+    private double amount;
+    private String timestamp;
 
     public String getType() {
         return type;
@@ -29,7 +31,4 @@ public class Transaction {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
-    private double amount;
-    private String timestamp;
 }
