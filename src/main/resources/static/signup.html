@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="signup-form">
+      <h1>Register</h1>
+      <input type="text" name="username" placeholder="Username"><br/>
+      <input type="password" name="password" placeholder="Password"><br/>
+      <input type="text" name="firstName" placeholder="First Name"><br/>
+      <input type="text" name="lastName" placeholder="Last Name"><br/>
+      <button type="submit">Register</button><br/>
+
+      <p>Already have an account? <br><a href="/signin">Signin</a></p>
+    </form>
+
+    <script>
+
+
+     function register(event) {
+       event.preventDefault();
+
+       const data = {
+         username: document.querySelector("input[name='username']").value,
+         firstName: document.querySelector("input[name='firstName']").value,
+         lastName: document.querySelector("input[name='lastName']").value,
+         password: document.querySelector("input[name='password']").value,
+       }
+       fetch("/signup", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json"
+         },
+         body: JSON.stringify(data),
+       }).then(response => {
+         if (response.ok) {
+           response.json();
+         } else {
+           throw new Error(`HTTP error ${response.status}`);
+         }
+       }).then(data => {
+         console.log(data);
+         window.location.replace("/");
+       }).catch(error => console.error(error));
+     }
+
+     document.getElementById("signup-form").addEventListener("submit", register);
+    </script>
+  </body>
+</html>
